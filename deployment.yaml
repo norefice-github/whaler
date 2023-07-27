@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: primuslearning
+  name: whaler
   labels:
-    app: primuslearning
+    app: whaler
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: primuslearning
+      app: whaler
   template:
     metadata:
       labels:
-        app: primuslearning
+        app: whaler
     spec:
       containers:
-        - name: primuslearning
-          image: 274127640471.dkr.ecr.us-east-2.amazonaws.com/primuslearning:1.1
+        - name: whaler
+          image: 477715925773.dkr.ecr.us-east-1.amazonaws.com/whaler:1.1
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
