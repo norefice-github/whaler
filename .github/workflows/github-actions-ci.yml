@@ -1,5 +1,6 @@
 name: Deploy whaler to EKS
 
+
 on:
   push:
     tags: [ "*" ]
