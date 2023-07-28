@@ -45,8 +45,10 @@ jobs:
 
     - name: Update kube config
       run: aws eks update-kubeconfig --name whaler
-    
+
     - name: Deploy to EKS
+      env:
+        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
       run: |
         kubectl apply -f deployment.yaml
         kubectl apply -f service.yaml
