@@ -44,8 +44,12 @@ jobs:
         docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
 
     - name: Update kube config
-      run: aws eks update-kubeconfig --name whaler
-
+      run: |
+        aws eks update-kubeconfig --name whaler
+        export KUBECONFIG=$HOME/.kube/config # Set KUBECONFIG to tell kubectl where to find the kubeconfig file
+        kubectl apply -f deployment.yaml
+        kubectl apply -f service.yaml
+        
     - name: Deploy to EKS
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
