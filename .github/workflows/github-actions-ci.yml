@@ -58,6 +58,32 @@ jobs:
         echo "get-context"
         kubectl config get-contexts
         echo "hit"
+        
+        kubectl apply -f - <<EOF
+        apiVersion: apps/v1
+        kind: Deployment
+        metadata:
+          name: whaler
+          labels:
+            app: whaler
+        spec:
+          replicas: 1
+          selector:
+            matchLabels:
+              app: whaler
+          template:
+            metadata:
+              labels:
+                app: whaler
+            spec:
+              containers:
+                - name: whaler
+                  image: 477715925773.dkr.ecr.us-east-1.amazonaws.com/whaler:1.1
+                  imagePullPolicy: Always
+                  ports:
+                    - containerPort: 8080
+        EOF
+        echo "hit 0"
         kubectl apply -f ./deployment.yaml
         echo "hit 1"
         kubectl apply -f service.yaml
