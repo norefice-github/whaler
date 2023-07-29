@@ -53,6 +53,7 @@ jobs:
       run: |
         aws eks update-kubeconfig --name whaler --region us-east-1
         aws eks list-clusters
+        kubectl config view
         echo "hit"
         kubectl apply -f deployment.yaml
         echo "hit 1"
