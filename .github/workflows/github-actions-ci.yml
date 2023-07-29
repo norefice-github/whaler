@@ -52,10 +52,11 @@ jobs:
     - name: Deploy to Amazon EKS
       run: |
         aws eks update-kubeconfig --name whaler --region us-east-1
-        aws eks list-clusters
         kubectl config view
-        echo "kubctl version:"
-        kubectl version
+        echo "current-context"
+        kubectl config current-context
+        echo "get-context"
+        kubectl config get-contexts
         echo "hit"
         kubectl apply -f deployment.yaml
         echo "hit 1"
