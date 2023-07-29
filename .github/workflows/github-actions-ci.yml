@@ -52,5 +52,6 @@ jobs:
     - name: Deploy to Amazon EKS
       run: |
         aws eks update-kubeconfig --name whaler --region us-east-1
+        aws eks list-clusters
         kubectl apply -f deployment.yaml
         kubectl apply -f service.yaml
