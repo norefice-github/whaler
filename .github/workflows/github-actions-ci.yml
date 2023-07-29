@@ -58,6 +58,6 @@ jobs:
         echo "get-context"
         kubectl config get-contexts
         echo "hit"
-        kubectl apply -f deployment.yaml
+        kubectl apply -f ./deployment.yaml
         echo "hit 1"
         kubectl apply -f service.yaml
