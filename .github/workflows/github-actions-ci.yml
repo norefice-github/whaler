@@ -52,17 +52,9 @@ jobs:
     - name: Deploy to Amazon EKS
       run: |
         aws eks update-kubeconfig --name whaler --region us-east-1
-        kubectl config view
         echo "current-context"
         kubectl config current-context
         echo "get-context"
         kubectl config get-contexts
-        echo "hit"
-
-        kubectl get nodes
-        kubectl create deployment nginx --image=nginx
-
-        echo "hit 1"
         kubectl apply -f ./deployment.yaml
-        echo "hit 2"
         kubectl apply -f ./service.yaml
