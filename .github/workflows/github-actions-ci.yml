@@ -4,7 +4,7 @@ on:
   push:
     tags: [ "*" ]
     branches:
-      - 'main'
+      - '*'
   pull_request:
     branches: [ "**" ]
 
@@ -48,5 +48,7 @@ jobs:
     
     - name: Deploy to EKS
       run: |
+        echo "hit"
         kubectl apply -f deployment.yaml
+        echo "hit1"
         kubectl apply -f service.yaml
