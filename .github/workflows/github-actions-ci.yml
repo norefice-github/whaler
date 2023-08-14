@@ -51,6 +51,7 @@ jobs:
     
     - name: Deploy to Amazon EKS
       run: |
+        echo "update-kubeconfig"
         aws eks update-kubeconfig --name whaler --region us-east-1
         echo "current-context"
         kubectl config current-context
